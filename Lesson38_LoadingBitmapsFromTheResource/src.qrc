@@ -1,0 +1,7 @@
+<RCC>
+    <qresource prefix="/">
+        <file>Data/Butterfly1.bmp</file>
+        <file>Data/Butterfly2.bmp</file>
+        <file>Data/Butterfly3.bmp</file>
+    </qresource>
+</RCC>

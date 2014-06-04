@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/">
+        <file>image/Bumps.bmp</file>
+        <file>image/Font.bmp</file>
+    </qresource>
+</RCC>

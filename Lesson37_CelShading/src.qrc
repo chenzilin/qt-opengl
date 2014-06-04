@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/">
+        <file>Data/Model.txt</file>
+        <file>Data/Shader.txt</file>
+    </qresource>
+</RCC>

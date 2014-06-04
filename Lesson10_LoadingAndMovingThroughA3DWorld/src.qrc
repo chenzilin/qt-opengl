@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/">
+        <file>world/World.txt</file>
+        <file>image/Crate.bmp</file>
+    </qresource>
+</RCC>

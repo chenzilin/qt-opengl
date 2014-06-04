@@ -1,0 +1,10 @@
+<RCC>
+    <qresource prefix="/">
+        <file>image/Base.bmp</file>
+        <file>image/Bump.bmp</file>
+        <file>image/Multi_On.bmp</file>
+        <file>image/Multi_On_Alpha.bmp</file>
+        <file>image/OpenGL.bmp</file>
+        <file>image/OpenGL_Alpha.bmp</file>
+    </qresource>
+</RCC>

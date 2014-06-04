@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/">
+        <file>data/GL.raw</file>
+        <file>data/Monitor.raw</file>
+    </qresource>
+</RCC>

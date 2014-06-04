@@ -1,0 +1,9 @@
+<RCC>
+    <qresource prefix="/">
+        <file>image/BigGlow3.bmp</file>
+        <file>image/Font.bmp</file>
+        <file>image/Halo3.bmp</file>
+        <file>image/HardGlow2.bmp</file>
+        <file>image/Streaks4.bmp</file>
+    </qresource>
+</RCC>

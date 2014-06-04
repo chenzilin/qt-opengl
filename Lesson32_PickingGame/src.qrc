@@ -1,0 +1,15 @@
+<RCC>
+    <qresource prefix="/">
+        <file>image/BlueFace.tga</file>
+        <file>image/Bucket.tga</file>
+        <file>image/Coke.tga</file>
+        <file>image/Crosshair.tga</file>
+        <file>image/Explode.tga</file>
+        <file>image/Font.tga</file>
+        <file>image/Ground.tga</file>
+        <file>image/Sky.tga</file>
+        <file>image/Target.tga</file>
+        <file>image/Vase.tga</file>
+        <file>voice/Shot.wav</file>
+    </qresource>
+</RCC>

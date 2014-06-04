@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/">
+        <file>image/Compressed.tga</file>
+        <file>image/Uncompressed.tga</file>
+    </qresource>
+</RCC>

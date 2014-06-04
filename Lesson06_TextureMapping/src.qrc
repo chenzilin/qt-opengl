@@ -1,0 +1,7 @@
+<RCC>
+    <qresource prefix="/">
+        <file>image/cubelogo.png</file>
+        <file>image/background.png</file>
+        <file>image/NeHe.bmp</file>
+    </qresource>
+</RCC>

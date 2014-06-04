@@ -1,0 +1,9 @@
+<RCC>
+    <qresource prefix="/">
+        <file>image/Boden.bmp</file>
+        <file>image/Marble.bmp</file>
+        <file>image/Spark.bmp</file>
+        <file>image/Wand.bmp</file>
+        <file>voice/Explode.wav</file>
+    </qresource>
+</RCC>
