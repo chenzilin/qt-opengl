@@ -14,7 +14,15 @@ Examples Structures
 ===============
 
 Lesson01 CreatingAnOpenGLWindow
+
 Lesson02 CreatingYourFirstPolygonAndQuad
+
 Lesson03 FlatandSmoothColors
+
 Lesson04 RotatingAPolygon
+
 Lesson05 SolidObjects
+
+Lesson06 TextureMapping
+
+Lesson07 TextureFiltersAndBasicLighting

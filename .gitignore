@@ -1,7 +1,3 @@
 *~
 build-*
-Lesson01/*.pro.user
-Lesson02/*.pro.user
-Lesson03/*.pro.user
-Lesson04/*.pro.user
-Lesson05/*.pro.user
+Lesson*/*.pro.user
