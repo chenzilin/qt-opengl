@@ -1,21 +1,7 @@
-# Compiled Object files
-*.slo
-*.lo
-*.o
-*.obj
-
-# Compiled Dynamic libraries
-*.so
-*.dylib
-*.dll
-
-# Compiled Static libraries
-*.lai
-*.la
-*.a
-*.lib
-
-# Executables
-*.exe
-*.out
-*.app
+*~
+build-*
+Lesson01/*.pro.user
+Lesson02/*.pro.user
+Lesson03/*.pro.user
+Lesson04/*.pro.user
+Lesson05/*.pro.user
