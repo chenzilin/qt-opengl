@@ -3,10 +3,6 @@
 
 #include <QGLWidget>
 #include <QKeyEvent>
-#include <GL/glu.h>
-#include <QMessageBox>
-#include <QApplication>
-#include <GL/glaux.h>
 
 class MyGLWidget : public QGLWidget
 {
@@ -37,7 +33,7 @@ public:
     explicit MyGLWidget(QWidget *parent = 0);
     ~MyGLWidget();
 protected:
-    void resizeGL(int w, int h);
+	void resizeGL(int width, int height);
 
     void initializeGL();
 

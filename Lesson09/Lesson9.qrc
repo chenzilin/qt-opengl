@@ -1,5 +1,5 @@
 <RCC>
     <qresource prefix="/">
-        <file>image/Glass.bmp</file>
+        <file>images/Star.bmp</file>
     </qresource>
 </RCC>

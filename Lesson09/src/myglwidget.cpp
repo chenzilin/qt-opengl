@@ -1,4 +1,8 @@
-﻿#include "myglwidget.h"
+﻿#include <QDebug>
+#include <QApplication>
+
+#include <GL/glu.h>
+#include <myglwidget.h>
 
 //3D空间中移动图像:
 //你想知道如何在3D空间中移动物体，你想知道如何在屏幕上绘制一个图像，而让图像的背景色变为透明，你希望有一个简单的动画。
@@ -28,31 +32,42 @@ MyGLWidget::~MyGLWidget()
     glDeleteTextures(1, &m_texture[0]);
 }
 
-//下面的代码的作用是重新设置OpenGL场景的大小，而不管窗口的大小是否已经改变(假定您没有使用全屏模式)。
-//甚至您无法改变窗口的大小时(例如您在全屏模式下)，它至少仍将运行一次--在程序开始时设置我们的透视图。
-//OpenGL场景的尺寸将被设置成它显示时所在窗口的大小。
-void MyGLWidget::resizeGL(int w, int h)
+void MyGLWidget::loadTexture()
 {
-    if(h == 0)// 防止被零除
-    {
-        h = 1;// 将高设为1
-    }
-    glViewport(0, 0, w, h); //重置当前的视口
-    //下面几行为透视图设置屏幕。意味着越远的东西看起来越小。这么做创建了一个现实外观的场景。
-    //此处透视按照基于窗口宽度和高度的45度视角来计算。0.1f，100.0f是我们在场景中所能绘制深度的起点和终点。
-    //glMatrixMode(GL_PROJECTION)指明接下来的两行代码将影响projection matrix(投影矩阵)。
-    //投影矩阵负责为我们的场景增加透视。 glLoadIdentity()近似于重置。它将所选的矩阵状态恢复成其原始状态。
-    //调用glLoadIdentity()之后我们为场景设置透视图。
-    //glMatrixMode(GL_MODELVIEW)指明任何新的变换将会影响 modelview matrix(模型观察矩阵)。
-    //模型观察矩阵中存放了我们的物体讯息。最后我们重置模型观察矩阵。如果您还不能理解这些术语的含义，请别着急。
-    //在以后的教程里，我会向大家解释。只要知道如果您想获得一个精彩的透视场景的话，必须这么做。
-    glMatrixMode(GL_PROJECTION);// 选择投影矩阵
-    glLoadIdentity();// 重置投影矩阵
-    //设置视口的大小
-    gluPerspective(45.0f,(GLfloat)w/(GLfloat)h,0.1f,100.0f);
+	QImage image(":/images/Star.bmp");
+	image = image.convertToFormat(QImage::Format_RGB888);
+	image = image.mirrored();
+	glGenTextures(1, &m_texture[0]);// 创建一个纹理
+	// 创建一个线性滤波纹理
+	glBindTexture(GL_TEXTURE_2D, m_texture[0]);
+	glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MAG_FILTER,GL_LINEAR);
+	glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MIN_FILTER,GL_LINEAR);
+	glTexImage2D(GL_TEXTURE_2D, 0, 3, image.width(), image.height(),
+				 0, GL_RGB, GL_UNSIGNED_BYTE, image.bits());
+}
 
-    glMatrixMode(GL_MODELVIEW);	//选择模型观察矩阵
-    glLoadIdentity(); // 重置模型观察矩阵
+void MyGLWidget::resizeGL(int width, int height)
+{
+	if (height == 0) { // 防止被零除
+		height = 1; // 将高设为1
+	}
+
+	glViewport(0, 0, width, height); //重置当前的视口
+	//下面几行为透视图设置屏幕。意味着越远的东西看起来越小。这么做创建了一个现实外观的场景。
+	//此处透视按照基于窗口宽度和高度的45度视角来计算。0.1f，100.0f是我们在场景中所能绘制深度的起点和终点。
+	//glMatrixMode(GL_PROJECTION)指明接下来的两行代码将影响projection matrix(投影矩阵)。
+	//投影矩阵负责为我们的场景增加透视。 glLoadIdentity()近似于重置。它将所选的矩阵状态恢复成其原始状态。
+	//调用glLoadIdentity()之后我们为场景设置透视图。
+	//glMatrixMode(GL_MODELVIEW)指明任何新的变换将会影响 modelview matrix(模型观察矩阵)。
+	//模型观察矩阵中存放了我们的物体讯息。最后我们重置模型观察矩阵。如果您还不能理解这些术语的含义，请别着急。
+	//在以后的教程里，我会向大家解释。只要知道如果您想获得一个精彩的透视场景的话，必须这么做。
+	glMatrixMode(GL_PROJECTION);// 选择投影矩阵
+	glLoadIdentity();// 重置投影矩阵
+	//设置视口的大小
+	gluPerspective(45.0f, (GLfloat)width/(GLfloat)height, 0.1f, 100.0f);
+
+	glMatrixMode(GL_MODELVIEW);	//选择模型观察矩阵
+	glLoadIdentity(); // 重置模型观察矩阵
 }
 
 //现在设置OpenGL的渲染方式。这里不打算使用深度测试，如果您使用第一课的代码的话，
@@ -233,20 +248,6 @@ void MyGLWidget::timerEvent(QTimerEvent *event)
 {
     updateGL();
     QGLWidget::timerEvent(event);
-}
-
-void MyGLWidget::loadTexture()
-{
-    QImage image(":/image/Star.bmp");
-    image = image.convertToFormat(QImage::Format_RGB888);
-    image = image.mirrored();
-    glGenTextures(1, &m_texture[0]);// 创建一个纹理
-    // 创建一个线性滤波纹理
-    glBindTexture(GL_TEXTURE_2D, m_texture[0]);
-    glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MAG_FILTER,GL_LINEAR);
-    glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MIN_FILTER,GL_LINEAR);
-    glTexImage2D(GL_TEXTURE_2D, 0, 3, image.width(), image.height(),
-                 0, GL_RGB, GL_UNSIGNED_BYTE, image.bits());
 }
 
 //这一课我尽我所能来解释如何加载一个灰阶位图纹理，(使用混色)去掉它的背景色后，再给它上色，最后让它在3D场景中移动。
